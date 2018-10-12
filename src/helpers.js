@@ -34,7 +34,10 @@ module.exports = {
             s += f;
           }
           else if (f) {
-            !isInline ? (s += '`') && (isInline = true) : null;
+            if (!isInline && f.replace(/\s/g, '').length) {
+              s += '`';
+              isInline = true;
+            }
             s += f;
           }
         });
